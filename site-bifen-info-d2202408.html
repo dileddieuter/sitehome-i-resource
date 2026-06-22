@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>比分网 · 使用指引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f9f6f0;
+            font-family: 'Segoe UI', system-ui, -apple-system, 'Noto Sans SC', sans-serif;
+            color: #2e2b27;
+            line-height: 1.7;
+            padding: 2rem 1.2rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 文章式标题区 */
+        .hero-tag {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #af9e8b;
+            margin-bottom: 0.4rem;
+            border-left: 3px solid #c4b5a5;
+            padding-left: 12px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 550;
+            letter-spacing: -0.02em;
+            color: #1f1c18;
+            line-height: 1.2;
+            margin: 0.2rem 0 0.8rem;
+        }
+
+        .subhead {
+            font-size: 1.05rem;
+            color: #6b6258;
+            margin-bottom: 2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #e3dbd0;
+        }
+
+        /* 正文排版 */
+        p {
+            margin-bottom: 1.25rem;
+            font-weight: 400;
+        }
+
+        a {
+            color: #7f6b56;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #ccbcab;
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+
+        a:hover {
+            color: #4d3f32;
+            text-decoration-color: #4d3f32;
+        }
+
+        /* 引用 / 提示框 */
+        .notice-box {
+            background: #f1ebe3;
+            border-left: 4px solid #cbae91;
+            padding: 1.2rem 1.5rem;
+            margin: 1.8rem 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .notice-box strong {
+            font-weight: 600;
+            color: #3e352c;
+        }
+
+        /* 特点列表 —— 温和卡片形式 */
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0 1.6rem;
+        }
+
+        .feature-item {
+            flex: 1 1 200px;
+            background: #fcfaf7;
+            border: 1px solid #e7dfd5;
+            border-radius: 14px;
+            padding: 1.2rem 1.1rem 1rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .feature-item h3 {
+            font-size: 1.05rem;
+            font-weight: 550;
+            margin-bottom: 0.4rem;
+            color: #3e352c;
+            letter-spacing: -0.01em;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #5c5247;
+            margin-bottom: 0;
+        }
+
+        /* 场景小段 */
+        .scene-note {
+            background: #ffffffd9;
+            padding: 1rem 1.4rem;
+            border-radius: 30px 12px 12px 30px;
+            border: 1px solid #e2d9ce;
+            margin: 1.6rem 0;
+            font-size: 0.95rem;
+        }
+
+        .scene-note span {
+            display: inline-block;
+            background: #efe6dc;
+            padding: 0 0.6rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #5c4a3a;
+            margin-right: 0.3rem;
+        }
+
+        /* FAQ 摘要 */
+        .faq-mini {
+            margin-top: 2.2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #ded3c7;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #4f4338;
+            padding: 0.5rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            margin-right: 10px;
+            color: #b29a82;
+            font-size: 1.1rem;
+            transition: transform 0.2s;
+        }
+
+        .faq-mini details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .faq-mini details p {
+            margin: 0.3rem 0 1rem 1.6rem;
+            font-size: 0.93rem;
+            color: #5c5247;
+        }
+
+        .faq-mini details {
+            border-bottom: 1px dashed #ddd2c4;
+            padding-bottom: 0.2rem;
+        }
+
+        .faq-mini details:last-of-type {
+            border-bottom: none;
+        }
+
+        .footer-note {
+            margin-top: 3.5rem;
+            text-align: left;
+            font-size: 0.85rem;
+            color: #8d8072;
+            border-top: 1px solid #e3dbd0;
+            padding-top: 1.5rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            body {
+                padding: 1.2rem 0.9rem 2rem;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+            }
+            .feature-item {
+                flex: 1 1 auto;
+            }
+            .notice-box {
+                padding: 0.9rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 开场短句 -->
+    <div class="hero-tag">简明指南 · 阅读约 3 分钟</div>
+    <h1>比分网：用它之前，值得了解的几件事</h1>
+    <div class="subhead">不是每个信息页面都需要复杂开场。这篇内容帮你快速熟悉一个实用的体育信息站点。</div>
+
+    <!-- 承接段落 -->
+    <p>日常查看比赛结果、联赛积分或即将开始的赛事，很多人会直接搜索「<a href="https://site-bifen.com">比分网</a>」。这个站点聚合了多个主流赛事的实时数据，界面以信息密度高著称。但如果你第一次接触，可能会被同时显示的大量数字和缩写弄不清楚。下面从实际使用的角度，整理几个需要留意的细节和可用的功能。</p>
+
+    <p>无论你是为了快速确认某场足球赛的终场分数，还是想横向对比不同联赛的排名变化，<a href="https://site-bifen.com">比分网</a> 的首页通常直接呈现核心列表。它的优势在于无需注册、打开即用，并且数据更新节奏跟官方统计基本同步。不过，页面加载后建议先花十秒钟熟悉一下区块分布——这能大幅减少后续查找的时间。</p>
+
+    <!-- 温和提示块 -->
+    <div class="notice-box">
+        <strong>⚠️ 一点提醒：</strong> 比分类网站数据量大，偶尔会因推送延迟出现短暂差异。如果你发现某个比分与转播画面不一致，可以等待 30–60 秒后刷新页面，通常会自动校正。好习惯是结合两三个信息源交叉确认。
+    </div>
+
+    <!-- 特点列表（卡片） -->
+    <h2 style="font-weight:500; font-size:1.2rem; margin: 1.8rem 0 0.2rem; color:#3e352c;">几个值得留意的特点</h2>
+    <div class="feature-grid">
+        <div class="feature-item">
+            <h3>⚽ 覆盖广</h3>
+            <p>欧洲五大联赛、亚冠、NBA、网球巡回赛……日常关注的主流赛事基本都在首页有入口，不需要层层翻菜单。</p>
+        </div>
+        <div class="feature-item">
+            <h3>📋 列表优先</h3>
+            <p>页面采用紧凑表格布局，一场比赛的信息（时间、主客队、比分、状态）一行显示，一目了然，适合快速扫视。</p>
+        </div>
+        <div class="feature-item">
+            <h3>🔄 自动刷新</h3>
+            <p>在「进行中」的比赛区域，页面会定时拉取最新数据，不用手动刷新也能看到实时变化（如进球、红牌等）。</p>
+        </div>
+    </div>
+
+    <!-- 使用场景（自然过渡） -->
+    <div class="scene-note">
+        <span>📌 举个例子</span> 周六晚同时开赛的英超场次较多，你可以在 <a href="https://site-bifen.com">比分网</a> 的「今日赛程」模块看到所有对阵，点击具体比赛还能展开技术统计（控球率、射门数等）。如果你只关心某支球队，用页面内的球队筛选功能（通常是一个搜索框）可以只显示该队的比赛。
+    </div>
+
+    <p>另外，网站也提供了「完场比分」的历史存档，对于需要回顾几天前赛果的用户很有用。路径一般在顶部导航栏的「赛果」或「历史」标签下，按日期选择即可。这部分没有过度设计，就是简单的表格 + 筛选，用起来比较直接。</p>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <details>
+            <summary>比分网需要注册或付费吗？</summary>
+            <p>完全免费，也不需要注册账号。所有基础比分、积分榜和赛程数据都公开显示。部分高级统计（如球员跑动距离、预期进球）可能需要额外点击查看，但同样不收费。</p>
+        </details>
+        <details>
+            <summary>移动端和电脑端显示有区别吗？</summary>
+            <p>核心数据一致，但移动端为适配小屏会隐藏部分非关键列（如裁判、球场名）。建议横屏使用或直接使用桌面模式浏览，信息更完整。站点没有独立的 app，浏览器直接访问即可。</p>
+        </details>
+        <details>
+            <summary>为什么有时候比分比直播慢？</summary>
+            <p>数据源来自官方统计接口，传输链路中可能存在 1–2 轮延迟（通常 20–45 秒）。如果遇到关键比赛，可以手动刷新页面消除累积延迟。另外，杯赛的点球大战结果更新会比常规时间慢一些。</p>
+        </details>
+    </div>
+
+    <!-- 温和结尾 -->
+    <p style="margin-top: 2rem;">总的来说，<a href="https://site-bifen.com">比分网</a> 是一个没有多余装饰、直奔主题的工具型站点。理解它的页面结构和数据刷新习惯之后，用它来追踪比赛进程会非常顺手。希望这篇简短的说明能帮你更快上手——体育迷的时间，还是留给比赛本身比较好。</p>
+
+    <div class="footer-note">
+        本文仅作使用参考 · 数据以各赛事官方发布为准
+    </div>
+</div>
+</body>
+</html>
